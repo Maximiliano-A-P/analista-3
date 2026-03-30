@@ -1,0 +1,31 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangulos</title>
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="flex">
+        <div id="inputs">
+            <legend class="encabezado">Ingrese el largo del primer lado del triangulo:</legend>
+            <input type="number" step="any" id="lado1"></input>
+            <legend class="encabezado">Ingrese el largo del segundo lado del triangulo:</legend>
+            <input type="number" step="any" id="lado2"></input>
+            <legend class="encabezado">Ingrese el largo del tercer lado del triangulo:</legend>
+            <input type="number" step="any" id="lado3"></input>
+            <button onclick="determinar()">Determinar</button>
+        </div>
+        <div id="output">
+            <p class="underline">El trinagulo ingresado es:</p>
+            <p id="cambio"></p>
+        </div>
+    </div>
+    <div id="consigna">
+        <p class="underline">Consigna:</p>
+        <p>Realizar un programa, que reciba el tamaño de los 3 lados de un triangulo y determine si es equilatero, isoseles, escalenos o error.</p>
+    </div>
+</body>
+<script src="js/fn.js"></script>
+</html>

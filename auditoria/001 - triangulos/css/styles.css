@@ -1,0 +1,48 @@
+.flex{
+    display: flex;
+}
+.underline{
+    text-decoration: underline;
+}
+#inputs{
+    background-color: aquamarine;
+    padding: 2vh 2vw 2vh 2vh;
+    width: 46vw;
+    margin: 2vh;
+    border-radius: 1vh;
+}
+.encabezado{
+    font-size: 2.5vh;
+    font-weight: bold;
+}
+input{
+    margin-bottom: 2vh;
+    font-size: 3vh;
+    width: 25vw;
+}
+button{
+    display: block;
+    font-size: 2vh;
+    margin: auto;
+}
+#output{
+    background-color: aqua;
+    width: 46vw;
+    margin: 2vh;
+    border-radius: 1vh;
+    font-size: 3.5vh;
+    font-weight: bold;
+    text-align: center;
+}
+#cambio{
+    margin-top: 10vh;
+}
+#consigna{
+    background-color: bisque;
+    font-size: 2.5vh;
+    font-weight: bold;
+    margin: 2vh;
+    border-radius: 1vh;
+    padding: 1vh 2vh 1vh 2vh;
+    font-style: italic;
+}

@@ -1,0 +1,65 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de memoria y sumas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <p id="titulo">Juego de memoria y sumas</p>
+    <div class="flex">
+        <div id="numeros">
+            <div id="info">
+                <p id="indice" class="inlineb">i</p>
+                <p id="final" class="inlineb">/i</p>
+            </div>
+            <div>
+                <p id="reemplazar" class="reemplazar">?</p>
+            </div>
+        </div>
+        <div id="controles">
+            <p class="inline">Elija la dificultad</p>
+            <select id='dificultad'>
+                <option value="1" selected>Facil</option>
+                <option value="2">Normal</option>
+                <option value="3">Dificil</option>
+                <option value="4">Si</option>
+            </select>
+            <p></p>
+            <p class="inline">Elija el tiempo de intervalo entre los numeros</p>
+            <select id='intervalo'>
+                <option value= 1.5 selected>1.5</option>
+                <option value= 2>2</option>
+                <option value= 2.5>2.5</option>
+                <option value= 3>3</option>
+            </select>
+            <br></br>
+            <p class="inline">Elija la cantidad de numeros (Min. 3/Max. 99)</p>
+            <input id="cantidad" placeholder="3" type="number"></input>
+            <br></br>
+            <div class="flex">
+                <div>
+                    <p class="inline">Iniciar Juego</p>
+                    <button id="iniciar" class="bt1" onclick="iniciarJuego()"></button>
+                    <br></br>
+                    <p class="inline">Pausar Juego</p>
+                    <button id="pausa" class="bt1" disabled onclick="pausar()"></button>
+                </div>
+                <div id="respuesta-zona">
+                    <p class="inline">Suma:</p>
+                    <input id="cantidad1" type="number"></input>
+                    <button id="habilitar" class="block" onclick="respuesta()" disabled>Respuesta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="reglas">
+        <p class="underline">Reglas:</p>
+        <p>-Despues de seleccionar la cantidad de numeros, la dificultad y el intervalo, los numeros apareceran, usted debe hacer la sumar en su mente, luego ingresarla.</p>
+        <p>-El puntaje sera determinado por el intervalo, la dificultad y la cantidad de numeros. Si pausa el juego se descontaran puntos. Solo si acierta.</p>
+        <p class="underline">Puntaje:</p>
+        <p id="puntajep">?</p>
+    </div>
+</body>
+<script src="js/fn.js"></script>
+</html>
