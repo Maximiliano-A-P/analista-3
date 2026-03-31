@@ -1,0 +1,39 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <p id="titulo">Calculo de pesos a Dolares<p>  
+    <div class="flex">
+        <div id="entrada">
+            <legend>Ingrese la cantidad de pesos argentinos</legend>
+            <input type="number" step="any" id="cantidadPesos"></input>
+            <button onclick="calcular()" id="cantidadPesosId">Calcular</button>
+            <p id="errorCantidad" class="error"></p>
+            <p id="errorApi" class="error"></p>
+        </div>
+        <div id="salida">
+            <div id="oficial">
+                <p class="underline">Dolares oficial:</p>
+                <p id="DOC">Compra:</p>
+                <p id="DOV">Venta:</p>
+            </div>
+            <div id="blue">
+                <p class="underline">Dolares blue:</p>
+                <p id="DBC">Compra:</p>
+                <p id="DBV">Venta:</p>
+            </div>
+            <div id="MEP">
+                <p class="underline">Dolares MEP/bolsa:</p>
+                <p id="DMEPC">Compra:</p>
+                <p id="DMEPV">Venta:</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/fn.js"></script>
+</html>

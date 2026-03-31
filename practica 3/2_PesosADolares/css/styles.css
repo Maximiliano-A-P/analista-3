@@ -1,0 +1,64 @@
+#titulo{
+    background-color: black;
+    color: white;
+    font-size: 7vh;
+    text-align: center;
+    padding: 1vh;
+}
+.flex{
+    display: flex;
+}
+#entrada{
+    background-color: cadetblue;
+    font-size: 5.6vh;
+    margin: 0vh 1vw 2vh 1vw;
+    padding: 2vh;
+    border-radius: 1vh;
+    height: 37vh;
+    width: 46.5vw;
+    margin-left: 1.2vw;
+    margin-right: 1.6vw;
+}
+#cantidadPesos{
+    font-size: 3.5vh;
+    width: 38vw;
+    text-align: center;
+}
+#cantidadPesosId{
+    height: 4.4vh;
+    width: 6vw;
+    transform:  translatey(-0.55vh);
+    font-size: 2vh;
+}
+.error{
+    color: red;
+}
+#salida{
+    font-weight: bold;
+    font-size: 5vh;
+    line-height: 1vh;
+    width: 46.5vw;
+}
+.underline{
+    text-decoration: underline;
+}
+#oficial{
+    background-color: rgb(163, 163, 163);
+    border-radius: 1vh;
+    padding: 1vh;
+    padding-left: 3vh;
+    margin-bottom: 1vh;
+}
+#blue{
+    background-color: rgb(155, 155, 255);
+    border-radius: 1vh;
+    padding: 1vh;
+    padding-left: 3vh;
+    margin-bottom: 1vh;
+}
+#MEP{
+    background-color: rgb(68, 255, 0);
+    border-radius: 1vh;
+    padding: 1vh;
+    padding-left: 3vh;
+}
