@@ -5,7 +5,10 @@ let cat4 = document.querySelector('#cat4')
 let cat5 = document.querySelector('#cat5')
 let cat6 = document.querySelector('#cat6')
 
+let data
+let tema
 let respuestas = []
+let preguntas = []
 let botones = []
 
 let debajo = document.querySelector('#debajo')
@@ -17,7 +20,7 @@ async function traerData() {
 }
 
 async function inicio(){
-    let data = await traerData()
+    data = await traerData()
     cat1.textContent = data.categorias[0].nombre
     cat2.textContent = data.categorias[1].nombre
     cat3.textContent = data.categorias[2].nombre
@@ -32,15 +35,16 @@ inicio()
 async function juego(categoria) {
     respuestas = []
     botones = []
+    preguntas = []
+
     let superior = document.createElement('div')
     superior.setAttribute('id','superior')
     debajo.appendChild(superior)
 
     let data = await traerData()
-    let tema = categoria;
+    tema = categoria;
 
     let number
-    let preguntas = []
 
     let esta
     while (preguntas.length < 5) {
@@ -208,7 +212,28 @@ function mostrarResultados(){
         }
     }
     resultadosP.textContent = 'Has acertado ' + cantidadCorrectas + ' preguntas!!!'
+    resultadosP.setAttribute('id','resultadosP')
     resultados.appendChild(resultadosP)
+
+    let resultado1 = document.createElement('p')
+    resultado1.textContent = data.categorias[tema].preguntas[preguntas[0]].pregunta + '(' + respuestas[0] +')'
+    resultados.appendChild(resultado1)
+
+    let resultado2 = document.createElement('p')
+    resultado2.textContent = data.categorias[tema].preguntas[preguntas[1]].pregunta + '(' + respuestas[1] +')'
+    resultados.appendChild(resultado2)
+
+    let resultado3 = document.createElement('p')
+    resultado3.textContent = data.categorias[tema].preguntas[preguntas[2]].pregunta + '(' + respuestas[2] +')'
+    resultados.appendChild(resultado3)
+
+    let resultado4 = document.createElement('p')
+    resultado4.textContent = data.categorias[tema].preguntas[preguntas[3]].pregunta + '(' + respuestas[3] +')'
+    resultados.appendChild(resultado4)
+
+    let resultado5 = document.createElement('p')
+    resultado5.textContent = data.categorias[tema].preguntas[preguntas[4]].pregunta + '(' + respuestas[4] +')'
+    resultados.appendChild(resultado5)
 
     let volverInicioB = document.createElement('button')
     volverInicioB.textContent = 'Volver al inicio'
