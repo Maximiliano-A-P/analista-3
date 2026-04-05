@@ -1,0 +1,91 @@
+#titulo{
+    background-color: black;
+    color: white;
+    font-size: 6vh;
+    margin: -0.7vh -0.35vw 2vh -0.35vw;
+    padding: 1vh;
+    text-align: center;
+}
+#consigna{
+    font-size: 4vh;
+    font-weight: bold;
+    line-height: 0;
+    text-decoration: underline;
+    margin-bottom: 5vh;
+}
+.flex{
+    display: flex;
+}
+.wrap{
+    flex-wrap: wrap;
+}
+.categoria{
+    border-radius: 2vh;
+    font-size: 8vh;
+    font-weight: bold;
+    height: 37vh;
+    margin: auto;
+    margin-bottom: 3vh;
+    text-align: center;
+    width: 30vw;
+}
+#cat1{
+    background-color: aqua;
+}
+#cat2{
+    background-color: greenyellow;
+}
+#cat3{
+    background-color: orange;
+}
+#cat4{
+    background-color: coral;
+}
+#cat5{
+    background-color: wheat;
+}
+#cat6{
+    background-color: mediumorchid;
+}
+#superior{
+    background-color: white;
+    height: 90vh;
+    margin: auto;
+    position: absolute;
+    top: 9.5vh;
+    width: 99.3vw;
+}
+#pregunta{
+    font-size: 5vh;
+    text-align: center;
+    width: 90vw;
+}
+#tiempo{
+    font-size: 5vh;
+    text-align: center;
+    width: 10vw;
+}
+.respuesta{
+    border-radius: 2vh;
+    font-size: 5vh;
+    height: 30vh;
+    margin: 4vh 4vh 2vh 4vh;
+    padding: 4vh;
+    width: 45vw;
+}
+#resultados{
+    background-color: white;
+    color: black;
+    font-size: 12vh;
+    height: 90vh;
+    margin: auto;
+    position: absolute;
+    text-align: center;
+    top: 9.5vh;
+    width: 99.3vw;
+}
+#volverB{
+    border-radius: 2vh;
+    font-size: 11vh;
+    padding: 2vh;
+}
