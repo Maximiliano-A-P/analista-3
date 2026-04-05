@@ -67,7 +67,7 @@ async function juego(categoria) {
 
     let tiempo = document.createElement('p')
     tiempo.setAttribute('id','tiempo')
-    tiempo.textContent = '20'
+    tiempo.textContent = '15'
     divPregunta.appendChild(tiempo)
 
     let divRespuestas = document.createElement('div')
@@ -162,7 +162,7 @@ function continuar(){
     return new Promise((resolve) => {
     let tiempoActual
     let tiempoP = document.querySelector('#tiempo')
-    let i = 20
+    let i = 15
 
     let terminarTurno = () => {
         clearInterval(intervalo)
