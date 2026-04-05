@@ -30,6 +30,8 @@ async function inicio(){
 inicio()
 
 async function juego(categoria) {
+    respuestas = []
+    botones = []
     let superior = document.createElement('div')
     superior.setAttribute('id','superior')
     debajo.appendChild(superior)
@@ -65,7 +67,7 @@ async function juego(categoria) {
 
     let tiempo = document.createElement('p')
     tiempo.setAttribute('id','tiempo')
-    tiempo.textContent = '5'
+    tiempo.textContent = '20'
     divPregunta.appendChild(tiempo)
 
     let divRespuestas = document.createElement('div')
@@ -160,7 +162,7 @@ function continuar(){
     return new Promise((resolve) => {
     let tiempoActual
     let tiempoP = document.querySelector('#tiempo')
-    let i = 5
+    let i = 20
 
     let terminarTurno = () => {
         clearInterval(intervalo)
