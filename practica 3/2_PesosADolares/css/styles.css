@@ -36,8 +36,12 @@
 #salida{
     font-weight: bold;
     font-size: 5vh;
-    line-height: 1vh;
+    line-height: 2vh;
     width: 46.5vw;
+}
+.no{
+    line-height: 0;
+    margin-top: -4vh;
 }
 .underline{
     text-decoration: underline;
@@ -61,4 +65,8 @@
     border-radius: 1vh;
     padding: 1vh;
     padding-left: 3vh;
+}
+.derecha{
+    text-align: right;
+    width: 100%;
 }

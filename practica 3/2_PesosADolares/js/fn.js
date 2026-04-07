@@ -32,26 +32,19 @@ async function calcular() {
     }
 
     if (cantidad == 0){
-        errorCantidad.textContent = 'No se ingreso cantidad o esta en cero'
-
-    DOC.textContent = 'Compra:'
-    DOV.textContent = 'Venta:'
-    DBC.textContent = 'Compra:'
-    DBV.textContent = 'Venta:'
-    DMEPC.textContent = 'Compra:'
-    DMEPV.textContent = 'Venta:'      
+        errorCantidad.textContent = 'No se ingreso cantidad o esta en cero'     
     } else {
     let dolarOficial = await apiDolarOficial.json()
     let dolarBlue = await apiDolarBlue.json()
     let dolarMEP = await apiDolarMEP.json()
 
-    DOC.textContent = 'Compra: $' + (cantidad / dolarOficial.compra).toFixed(4)
-    DOV.textContent = 'Venta: $' + (cantidad / dolarOficial.venta).toFixed(4)
+    DOC.textContent = ((cantidad / dolarOficial.compra).toFixed(2)).replace('.',',')
+    DOV.textContent = ((cantidad / dolarOficial.venta).toFixed(2)).replace('.',',')
 
-    DBC.textContent = 'Compra: $' + (cantidad / dolarBlue.compra).toFixed(4)
-    DBV.textContent = 'Venta: $' + (cantidad / dolarBlue.venta).toFixed(4)
+    DBC.textContent = ((cantidad / dolarBlue.compra).toFixed(2)).replace('.',',')
+    DBV.textContent = ((cantidad / dolarBlue.venta).toFixed(2)).replace('.',',')
 
-    DMEPC.textContent = 'Compra: $' + (cantidad / dolarMEP.compra).toFixed(4)
-    DMEPV.textContent = 'Venta: $' + (cantidad / dolarMEP.venta).toFixed(4)
+    DMEPC.textContent = ((cantidad / dolarMEP.compra).toFixed(2)).replace('.',',')
+    DMEPV.textContent = ((cantidad / dolarMEP.venta).toFixed(2)).replace('.',',')
     }
 }
