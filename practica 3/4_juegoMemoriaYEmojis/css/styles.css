@@ -1,0 +1,44 @@
+body{
+    background-color: gray;
+}
+#titulo{
+    background-color: black;
+    color: white;
+    font-size: 5vh;
+    font-weight: bold;
+    margin: -0.7vh -0.34vw -0vh -0.34vw;
+    padding: 1vh;
+    text-align: center;
+}
+#fondo{
+    margin: auto;
+    height: 90vh;
+    width: 90vh;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+}
+.botones{
+    background-color: white;
+    height: 9vh;
+    width: 9vh;
+    font-size: 5vh;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.botones:disabled{
+    cursor: not-allowed;
+    color: initial;
+}
+#resultados{
+    background-color: burlywood;
+    font-size: 9vh;
+    font-weight: bold;
+    height: 90vh;
+    margin-top: -1vh;
+    left: 27vw;
+    position: absolute;
+    text-align: center;
+    top: 10vh;
+    width: 90vh;
+}
