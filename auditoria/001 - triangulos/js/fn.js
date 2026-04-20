@@ -42,4 +42,3 @@ function determinar(){
     let cambio = document.querySelector('#cambio')
     cambio.textContent = devolucion
 }
-
