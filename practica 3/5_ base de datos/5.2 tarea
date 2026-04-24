@@ -1,0 +1,49 @@
+consignas: 
+
+1) cuantos alumnos tiene cada materia
+
+select count *
+form materias
+where id_materia = "x";
+
+2) cuantos alumnos tiene cada carrera (mostrar la cantidad de alumnos de todas lass carreras)
+
+SELECT carreras.nombre, carreras.id_carreras, COUNT (*)
+FROM carreras
+INNER JOIN alumnos ON
+alumnos.id_carrera = carreras.id_carrera
+group by 
+2,1;
+
+3) que debemos modificar en la bd paraa poder guardar las notas 
+
+agregar una tabla con nombre ejemplo registros
+
+con los campos:
+id_nota
+id_materia
+id_alumno
+nota
+fecha 
+
+
+3.5) agragar fecha de nacimiento y nota de aprobacion
+
+ALTER TABLE alumnos 
+ADD COLUMN fecha_nacimiento 'varchar(20)';
+
+ALTER TABLE materias
+ADD COLUMN nota_aprobacion integer;
+
+4) trayectoria de un alumno (todas las notas, de todas las materias en la carrera en la que esta, incluso las que no tienen notas), (que queden por año 1,2,3 y nombre de materia alf), cambiar curso era año de cursada
+
+SELECT materia, notas, fecha
+FROM alumnos
+INNER JOIN carreras ON 
+alumnos.id_carrera = carreras.id_carrera
+INNER JOIN materias ON
+carreras.id_carreras = materias.id_carrera
+OUTER JOIN registros ON
+alumnos.id_alumno = registros.id_alumno
+where id_alumno = "x"
+ORDER BY 
