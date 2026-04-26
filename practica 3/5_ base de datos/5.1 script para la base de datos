@@ -1,0 +1,201 @@
+Scipt para crear la base de datos:
+
+CREATE TABLE carreras (
+    id_carrera int AUTO_INCREMENT PRIMARY KEY,
+    nombre varchar(255) NOT NULL
+);
+
+CREATE TABLE profesores (
+    id_profesor int AUTO_INCREMENT PRIMARY KEY,
+    nombre varchar(255) NOT NULL,
+    email varchar(255) NOT NULL
+);
+
+CREATE TABLE alumnos (
+  id_alumno int AUTO_INCREMENT PRIMARY KEY,
+  nombre varchar(255) NOT NULL,
+  edad int NOT NULL,
+  dni int NOT NULL UNIQUE,
+  email varchar(255) NOT NULL,
+  id_carrera int NOT NULL,
+  CONSTRAINT fk_alumnos_carreras
+  FOREIGN KEY (id_carrera)
+  REFERENCES carreras(id_carrera)
+);
+
+CREATE TABLE materias (
+    id_materias int AUTO_INCREMENT PRIMARY KEY,
+    nombre varchar(255) NOT NULL,
+    curso int NOT NULL,
+    id_profesor int NOT NULL,
+    CONSTRAINT fk_materias_profesores
+    FOREIGN KEY (id_profesor)
+    REFERENCES profesores(id_profesor),
+    id_carrera int NOT NULL,
+    CONSTRAINT fk_materias_carreras
+    FOREIGN KEY (id_carrera)
+    REFERENCES carreras(id_carrera)
+);
+
+
+
+//////DATOS///////
+
+INSERT INTO carreras (nombre) 
+VALUES 
+    ('historia'), 
+    ('economicas'), 
+    ('lenguas'), 
+    ('sistemas');
+
+
+//////PROFESORES///////
+INSERT INTO profesores (nombre, email)
+SELECT
+    CONCAT(
+        ELT(FLOOR(1 + RAND(n)*10),
+            'Juan','Ana','Luis','María','Pedro','Lucía','Carlos','Sofía','Diego','Valentina'
+        ),
+        ' ',
+        ELT(FLOOR(1 + RAND(n+100)*10),
+            'Gómez','Pérez','López','Rodríguez','Fernández','Martínez','Sánchez','Romero','Díaz','Torres'
+        )
+    ) AS nombre,
+    CONCAT(
+        LOWER(
+            CONCAT(
+                ELT(FLOOR(1 + RAND(n+200)*10),
+                    'juan','ana','luis','maria','pedro','lucia','carlos','sofia','diego','valentina'
+                ),
+                '.',
+                ELT(FLOOR(1 + RAND(n+300)*10),
+                    'gomez','perez','lopez','rodriguez','fernandez','martinez','sanchez','romero','diaz','torres'
+                )
+            )
+        ),
+        n,
+        '@mail.com'
+    ) AS email
+FROM (
+    SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+    UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10
+    UNION ALL SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15
+    UNION ALL SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20
+    UNION ALL SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25
+    UNION ALL SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30
+    UNION ALL SELECT 31 UNION ALL SELECT 32 UNION ALL SELECT 33 UNION ALL SELECT 34 UNION ALL SELECT 35
+    UNION ALL SELECT 36 UNION ALL SELECT 37 UNION ALL SELECT 38 UNION ALL SELECT 39 UNION ALL SELECT 40
+    UNION ALL SELECT 41 UNION ALL SELECT 42 UNION ALL SELECT 43 UNION ALL SELECT 44 UNION ALL SELECT 45
+    UNION ALL SELECT 46 UNION ALL SELECT 47 UNION ALL SELECT 48 UNION ALL SELECT 49 UNION ALL SELECT 50
+) AS numeros;
+
+
+///CARRERAS
+INSERT INTO materias (nombre, curso, id_profesor, id_carrera)
+SELECT
+    CASE c.id_carrera
+        /* HISTORIA (1–30) */
+        WHEN 1 THEN ELT(n.n,
+            'Historia Antigua','Historia Medieval','Historia Moderna','Historia Contemporánea','Historiografía',
+            'Arqueología','Historia de América','Historia Argentina','Historia Económica','Historia del Arte',
+            'Historia Política','Historia Social','Historia Cultural','Historia Colonial','Historia Europea',
+            'Historia Asiática','Historia Africana','Historia de Oceanía','Historia de la Ciencia','Historia Militar',
+            'Historia de las Religiones','Paleografía','Diplomática','Genealogía','Historia Urbana',
+            'Historia Rural','Historia del Pensamiento','Historia de las Ideas','Seminario de Historia','Metodología Histórica'
+        )
+        /* ECONÓMICAS (1–30) */
+        WHEN 2 THEN ELT(n.n,
+            'Microeconomía I','Microeconomía II','Macroeconomía I','Macroeconomía II','Contabilidad I',
+            'Contabilidad II','Finanzas I','Finanzas II','Econometría I','Econometría II',
+            'Estadística I','Estadística II','Costos','Administración I','Administración II',
+            'Comercio Internacional','Matemática Financiera','Economía Pública','Economía Laboral','Economía Internacional',
+            'Teoría de Juegos','Análisis Financiero','Mercados de Capitales','Auditoría','Impuestos',
+            'Gestión de Empresas','Economía del Desarrollo','Economía Monetaria','Economía Bancaria','Seminario Económico'
+        )
+        /* LENGUAS (1–30) */
+        WHEN 3 THEN ELT(n.n,
+            'Gramática Inglesa I','Gramática Inglesa II','Fonética I','Fonética II','Literatura Inglesa I',
+            'Literatura Inglesa II','Traducción I','Traducción II','Lingüística I','Lingüística II',
+            'Inglés Técnico','Expresión Oral I','Expresión Oral II','Comprensión Lectora I','Comprensión Lectora II',
+            'Didáctica de Lenguas','Cultura Inglesa','Redacción','Análisis del Discurso','Semántica',
+            'Sintaxis','Pragmática','Fonología','Historia de la Lengua','Traducción Técnica',
+            'Traducción Literaria','Interpretación','Inglés Avanzado','Inglés Intermedio','Seminario de Lenguas'
+        )
+        /* SISTEMAS (1–30) */
+        WHEN 4 THEN ELT(n.n,
+            'Programación I','Programación II','Programación III','Bases de Datos I','Bases de Datos II',
+            'Algoritmos I','Algoritmos II','Estructuras de Datos','Sistemas Operativos I','Sistemas Operativos II',
+            'Redes I','Redes II','Ingeniería de Software I','Ingeniería de Software II','Arquitectura de Computadoras',
+            'Seguridad Informática','Inteligencia Artificial','Machine Learning','Desarrollo Web','Desarrollo Móvil',
+            'Análisis de Sistemas','Diseño de Sistemas','Testing de Software','DevOps','Big Data',
+            'Computación en la Nube','Sistemas Distribuidos','Interacción Humano-Computadora','Compiladores','Seminario de Sistemas'
+        )
+    END AS nombre,
+
+    -- Lógica de curso: 1-10 -> Año 1 | 11-20 -> Año 2 | 21-30 -> Año 3
+    CEIL(n.n / 10) AS curso,
+
+    FLOOR(1 + RAND(n.n * 100 + c.id_carrera) * 50) AS id_profesor,
+    c.id_carrera
+
+FROM
+(
+    SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+    UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10
+    UNION ALL SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15
+    UNION ALL SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20
+    UNION ALL SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25
+    UNION ALL SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30
+) n
+CROSS JOIN
+(
+    SELECT 1 AS id_carrera UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4
+) c;
+
+
+//////ALUMNOS///////
+INSERT INTO alumnos (nombre, edad, dni, email, id_carrera)
+SELECT 
+    -- Generación de Nombre Completo
+    CONCAT(
+        ELT(FLOOR(1 + RAND(n.n)*10), 
+            'Juan','Ana','Luis','María','Pedro','Lucía','Carlos','Sofía','Diego','Valentina'
+        ), 
+        ' ', 
+        ELT(FLOOR(1 + RAND(n.n+100)*10), 
+            'Gómez','Pérez','López','Rodríguez','Fernández','Martínez','Sánchez','Romero','Díaz','Torres'
+        )
+    ) AS nombre,
+
+    -- Edad
+    FLOOR(18 + RAND(n.n+200) * 23) AS edad,
+
+    -- DNI único
+    30000000 + n.n AS dni,
+
+    -- EMAIL (Nombre.Apellido + ID para asegurar que sea único)
+    LOWER(CONCAT(
+        ELT(FLOOR(1 + RAND(n.n)*10), 'juan','ana','luis','maria','pedro','lucia','carlos','sofia','diego','valentina'),
+        '.',
+        ELT(FLOOR(1 + RAND(n.n+100)*10), 'gomez','perez','lopez','rodriguez','fernandez','martinez','sanchez','romero','diaz','torres'),
+        n.n, 
+        '@universidad.edu'
+    )) AS email,
+
+    -- Distribución de carrera (50 alumnos por carrera)
+    FLOOR((n.n - 1) / 50) + 1 AS id_carrera
+
+FROM 
+(
+    SELECT a.n + b.n*10 + 1 AS n
+    FROM 
+        (SELECT 0 n UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+         UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) a,
+        (SELECT 0 n UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+         UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 
+         UNION ALL SELECT 10 UNION ALL SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 
+         UNION ALL SELECT 15 UNION ALL SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19) b
+) n
+WHERE n.n <= 200;
+
+

@@ -2,48 +2,69 @@ consignas:
 
 1) cuantos alumnos tiene cada materia
 
-select count *
-form materias
-where id_materia = "x";
+SELECT materias.nombre, COUNT(alumnos.id_alumnos)
+FROM materias
+JOIN alumnos ON materias.id_carrera = alumnos.id_carrera
+GROUP BY materias.nombre;
 
-2) cuantos alumnos tiene cada carrera (mostrar la cantidad de alumnos de todas lass carreras)
+2) cuantos alumnos tiene cada carrera (mostrar la cantidad de alumnos de todas las carreras)
 
-SELECT carreras.nombre, carreras.id_carreras, COUNT (*)
+SELECT carreras.nombre, carreras.id_carrera, COUNT(*)
 FROM carreras
-INNER JOIN alumnos ON
-alumnos.id_carrera = carreras.id_carrera
-group by 
-2,1;
+INNER JOIN alumnos ON alumnos.id_carrera = carreras.id_carrera
+GROUP BY 2, 1;
 
 3) que debemos modificar en la bd paraa poder guardar las notas 
 
-agregar una tabla con nombre ejemplo registros
+agregar una tabla con nombre ejemplo registros, con los campos:
 
-con los campos:
 id_nota
 id_materia
 id_alumno
 nota
 fecha 
 
+Consulta: 
+CREATE TABLE registros (
+  id_nota int AUTO_INCREMENT PRIMARY KEY,
+  nota int NOT NULL,
+  fecha varchar(255) NOT NULL,
+  id_alumno int NOT NULL,
+  id_materia int NOT NULL,
+  CONSTRAINT fk_registros_alumnos
+    FOREIGN KEY (id_alumno)
+    REFERENCES alumnos(id_alumno),
+  CONSTRAINT fk_registros_materias
+    FOREIGN KEY (id_materia)
+    REFERENCES materias(id_materias)
+);
+
 
 3.5) agragar fecha de nacimiento y nota de aprobacion
 
 ALTER TABLE alumnos 
-ADD COLUMN fecha_nacimiento 'varchar(20)';
+ADD COLUMN fecha_nacimiento varchar(255);
 
 ALTER TABLE materias
 ADD COLUMN nota_aprobacion integer;
 
-4) trayectoria de un alumno (todas las notas, de todas las materias en la carrera en la que esta, incluso las que no tienen notas), (que queden por año 1,2,3 y nombre de materia alf), cambiar curso era año de cursada
+UPDATE materias
+SET nota_aprobacion = FLOOR(RAND() * 3) + 4
+WHERE nota_aprobacion IS NULL OR nota_aprobacion = 0;
 
-SELECT materia, notas, fecha
+4) trayectoria de un alumno (todas las notas, de todas las materias en la carrera en la que esta, incluso las que no tienen notas), (que queden por año 1,2,3 y nombre de materia alf):
+
+SELECT 
+    materias.nombre, 
+    registros.nota, 
+    registros.fecha,
+    materias.curso
 FROM alumnos
-INNER JOIN carreras ON 
-alumnos.id_carrera = carreras.id_carrera
-INNER JOIN materias ON
-carreras.id_carreras = materias.id_carrera
-OUTER JOIN registros ON
-alumnos.id_alumno = registros.id_alumno
-where id_alumno = "x"
+INNER JOIN carreras ON alumnos.id_carrera = carreras.id_carrera
+INNER JOIN materias ON carreras.id_carrera = materias.id_carrera
+LEFT JOIN registros ON materias.id_materias = registros.id_materia 
+    AND alumnos.id_alumno = registros.id_alumno
+WHERE alumnos.id_alumno = 123
 ORDER BY 
+    materias.curso ASC, 
+    materias.nombre ASC;
