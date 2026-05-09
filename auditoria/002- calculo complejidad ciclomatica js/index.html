@@ -10,6 +10,16 @@
     <p>Ingrese el archivo.js</p>
     <input id="inputJS" type="file" accept=".js"></input>
     <p id="complejidadP">La complejidad ciclomatica es:</p>
+    <div class="flex">
+        <div id="izq">
+            <p>Clasificacion de los bucles:</p>
+            <div id="tipos"></div>
+        </div>
+        <div>
+            <p>Clasificacion tipologica:</p>
+            <div id="tiposTopologicos"></div>
+        </div>
+    </div>
 </body>
 <script src="https://unpkg.com/esprima@~4.0/dist/esprima.js"></script>
 <script src="js/fn.js"></script>

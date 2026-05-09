@@ -1,0 +1,32 @@
+1) crear la tabla usuarios 
+id
+nombre
+correo
+contraseña
+
+CREATE TABLE usuarios (
+  id_usuario int AUTO_INCREMENT PRIMARY KEY,
+  nombre varchar(255) NOT NULL UNIQUE,
+  correo varchar(255) NOT NULL,
+  contraseña varchar(255) NOT NULL
+);
+
+2) agegamos datos
+
+INSERT INTO usuarios(nombre,correo,contraseña)
+VALUES ('1','1@gmail','1_contra'),
+('2','2@gmail','2_contra'),
+('3','3@gmail','3_contra'),
+('4','4@gmail','4_contra'),
+('5','5@gmail','5_contra')
+;
+
+3) leemos datos usuarios con php
+
+4) mostramos los datos
+
+5) Login 
+
+6) CRUD (carreras, materias, alumnos, profesores, registros)  que se vean estos datos
+
+7) La trajectoria o el analitico de cada alumno

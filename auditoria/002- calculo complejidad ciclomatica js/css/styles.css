@@ -5,3 +5,15 @@ body{
 #inputJS{
     font-size: 4vh;
 }
+#tipos{
+    margin-top: -4vh;
+}
+#tiposTopologicos{
+    margin-top: -4vh;
+}
+.flex{
+    display: flex;
+}
+#izq{
+    width: 49vw;
+}
