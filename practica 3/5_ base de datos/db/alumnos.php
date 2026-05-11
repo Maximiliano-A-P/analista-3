@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>Agregar nuevo alumno</p>
-<form action="db/procesos/addAlumno.php" method="POST">
+<form action="procesos/addAlumno.php" method="POST">
     <p>Nombre:</p>
     <input type="text" name="nombre" required></input>
     <p>Edad:</p>
@@ -23,7 +23,7 @@
 </form>
 <br><br><br><br>
 <p>Editar alumno existente</p>
-<form action="db/procesos/editAlumno.php" method="POST">
+<form action="procesos/editAlumno.php" method="POST">
     <p>ID del alumno:</p>
     <input type="number" name="id_alumno" required></input>
     <p>Nombre:</p>
@@ -42,14 +42,22 @@
 </form>
 <br><br><br><br>
 <p>Eliminar alumno existente</p>
-<form action="db/procesos/deleteAlumno.php" method="POST">
+<form action="procesos/deleteAlumno.php" method="POST">
     <p>ID del alumno:</p>
     <input type="number" name="id_alumno" required></input>
     <button>Eliminar</button>
 </form>
 <br><br><br><br>
+<p>Ver el analitico de un alumno</p>
+<form action="procesos/analiticoAlumno.php" method="POST">
+    <p>ID del alumno:</p>
+    <input type="number" name="id_alumno" required></input>
+    <button>Mostrar</button>
+</form>
 </body>
 </html>
+<br><br><br><br>
+
 
 <?php
 require_once "datos.php";

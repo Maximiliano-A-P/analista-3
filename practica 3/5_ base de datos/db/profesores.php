@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>Agregar nuevo profesor</p>
-<form action="db/procesos/addProfesor.php" method="POST">
+<form action="procesos/addProfesor.php" method="POST">
     <p>Nombre:</p>
     <input type="text" name="nombre" required></input>
     <p>Email:</p>
@@ -15,7 +15,7 @@
 </form>
 <br><br><br><br>
 <p>Editar profesor existente</p>
-<form action="db/procesos/editProfesor.php" method="POST">
+<form action="procesos/editProfesor.php" method="POST">
     <p>ID del profesor:</p>
     <input type="number" name="id_profesor" required></input>
     <p>Nombre:</p>
@@ -26,7 +26,7 @@
 </form>
 <br><br><br><br>
 <p>Eliminar profesor existente</p>
-<form action="db/procesos/deleteProfesor.php" method="POST">
+<form action="procesos/deleteProfesor.php" method="POST">
     <p>ID del profesor:</p>
     <input type="number" name="id_profesor" required></input>
     <button>Eliminar</button>

@@ -6,14 +6,14 @@
 </head>
 <body>
 <p>Agregar nueva carrera</p>
-<form action="db/procesos/addCarrera.php" method="POST">
+<form action="procesos/addCarrera.php" method="POST">
     <p>Nombre:</p>
     <input type="text" name="nombre" required></input>
     <button>Agregar</button>
 </form>
 <br><br><br><br>
 <p>Editar carrera existente</p>
-<form action="db/procesos/editCarrera.php" method="POST">
+<form action="procesos/editCarrera.php" method="POST">
     <p>ID de la carrera:</p>
     <input type="number" name="id_carrera" required></input>
     <p>Nombre:</p>
@@ -22,7 +22,7 @@
 </form>
 <br><br><br><br>
 <p>Eliminar carrera existente</p>
-<form action="db/procesos/deleteCarrera.php" method="POST">
+<form action="procesos/deleteCarrera.php" method="POST">
     <p>ID de la carrera:</p>
     <input type="number" name="id_carrera" required></input>
     <button>Eliminar</button>

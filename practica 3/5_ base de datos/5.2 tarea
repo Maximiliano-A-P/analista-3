@@ -54,17 +54,15 @@ WHERE nota_aprobacion IS NULL OR nota_aprobacion = 0;
 
 4) trayectoria de un alumno (todas las notas, de todas las materias en la carrera en la que esta, incluso las que no tienen notas), (que queden por año 1,2,3 y nombre de materia alf):
 
-SELECT 
+"SELECT 
     materias.nombre, 
     registros.nota, 
-    registros.fecha,
-    materias.curso
-FROM alumnos
+    registros.fecha, 
+    materias.curso 
+FROM alumnos 
 INNER JOIN carreras ON alumnos.id_carrera = carreras.id_carrera
 INNER JOIN materias ON carreras.id_carrera = materias.id_carrera
 LEFT JOIN registros ON materias.id_materias = registros.id_materia 
-    AND alumnos.id_alumno = registros.id_alumno
-WHERE alumnos.id_alumno = 123
-ORDER BY 
-    materias.curso ASC, 
-    materias.nombre ASC;
+    AND alumnos.id_alumnos = registros.id_alumno
+WHERE alumnos.id_alumnos = :id_alumno
+ORDER BY materias.curso ASC, materias.nombre ASC";

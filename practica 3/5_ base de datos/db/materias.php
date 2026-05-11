@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>Agregar nueva materia</p>
-<form action="db/procesos/addMateria.php" method="POST">
+<form action="procesos/addMateria.php" method="POST">
     <p>Nombre:</p>
     <input type="text" name="nombre" required></input>
     <p>Curso:</p>
@@ -21,7 +21,7 @@
 </form>
 <br><br><br><br>
 <p>Editar materia existente</p>
-<form action="db/procesos/editMateria.php" method="POST">
+<form action="procesos/editMateria.php" method="POST">
     <p>ID de la materia:</p>
     <input type="number" name="id_materia" required></input>
     <p>Nombre:</p>
@@ -38,7 +38,7 @@
 </form>
 <br><br><br><br>
 <p>Eliminar materia existente</p>
-<form action="db/procesos/deleteMateria.php" method="POST">
+<form action="procesos/deleteMateria.php" method="POST">
     <p>ID del materia:</p>
     <input type="number" name="id_materia" required></input>
     <button>Eliminar</button>

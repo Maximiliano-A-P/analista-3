@@ -16,11 +16,20 @@ input.addEventListener('change', evento => {
 
             let nodosPredicado = 0;
             let clasificacion = {
-                for: 0, while: 0, doWhile: 0, forIn: 0, forOf: 0, if: 0, otros: 0
+                for: 0,
+                while: 0, 
+                doWhile: 0, 
+                forIn: 0, 
+                forOf: 0, 
+                if: 0, 
+                otros: 0
             };
             
             let estadisticasTopologia = {
-                simples: 0, anidados: 0, concatenados: 0, noEstructurados: 0
+                simples: 0, 
+                anidados: 0, 
+                concatenados: 0, 
+                noEstructurados: 0
             };
 
             estraverse.traverse(ast, {
