@@ -2,6 +2,7 @@ let input = document.querySelector('#inputJS')
 let complejidadP = document.querySelector('#complejidadP')
 let tipos = document.querySelector('#tipos')
 let tiposTopologicos = document.querySelector('#tiposTopologicos')
+let casos = document.querySelector('#casos')
 
 input.addEventListener('change', evento => {
     const archivo = evento.target.files[0];
@@ -10,9 +11,10 @@ input.addEventListener('change', evento => {
     const lector = new FileReader();
     lector.onload = function(e) {
         const contenido = e.target.result;
-
+        
         try {
-            const ast = esprima.parseModule(contenido);
+            const ast = esprima.parseModule(contenido , {range: true});
+            let casosGenerados = [];
 
             let nodosPredicado = 0;
             let clasificacion = {
@@ -46,11 +48,18 @@ input.addEventListener('change', evento => {
                     
                     //Clasificación Topológica
                     if (esBucle(node)) {
+                        // 1. Extraer el string exacto del bucle usando los rangos
+                        let codigoBucle = contenido.substring(node.range[0], node.range[1]);
+
+                        // 2. Determinar su categoría topológica
+                        let categoria = "Simple";
                         if (tienePadreBucle(this.parents())) {
+                            categoria = "Anidado";
                             estadisticasTopologia.anidados++;
                         } else {
                             if (esConcatenado(node, parent)) {
                                 estadisticasTopologia.concatenados++;
+                                categoria = "Concatenado";
                             } else {
                                 estadisticasTopologia.simples++;
                             }
@@ -58,11 +67,17 @@ input.addEventListener('change', evento => {
                         
                         if (tieneSaltosIrregulares(node)) {
                             estadisticasTopologia.noEstructurados++;
+                            categoria = "No Estructurado"
                         }
+
+                        let plantillaPrueba = generarPlantillaPrueba(codigoBucle, categoria, loopCounter);
+                        casosGenerados.push(plantillaPrueba);
                     }
                 }
             });
 
+            // 4. Mostrar las pruebas generadas en la interfaz
+            areaPruebas.textContent = casosGenerados.join('\n\n');
 
             const complejidad = nodosPredicado + 1;
             complejidadP.textContent = 'La complejidad ciclomática es: ' + complejidad;
@@ -171,3 +186,48 @@ const estraverse = {
     }
 };
 // --- FIN DE LA FUNCIÓN ESTRAVERSE ---
+
+// Función asistente para armar el archivo de pruebas automáticamente
+function generarPlantillaPrueba(codigoBucle, categoria, id) {
+    let sugerenciaEntrada = "";
+
+    // Inteligencia básica según la categoría
+    switch(categoria) {
+        case "Simple":
+            sugerenciaEntrada = `
+    // TOPOLOGÍA: SIMPLE
+    // Alerta de Caja Blanca: Prueba los límites de la condición del bucle.
+    const entradaInmediata = []; // Fuerza 0 iteraciones
+    const entradaNormal = [1, 2, 3]; // Fuerza N iteraciones`;
+            break;
+        case "Anidado":
+            sugerenciaEntrada = `
+    // TOPOLOGÍA: ANIDADO
+    // Alerta de Caja Blanca: Prueba matrices vacías [[]] o combinaciones extremas (NxM).
+    const matrizVacia = []; 
+    const matrizExtrema = [[0]];`;
+            break;
+        default:
+            sugerenciaEntrada = `
+    // TOPOLOGÍA: ${categoria.toUpperCase()}
+    // Alerta de Caja Blanca: Verifica estados intermedios o salidas abruptas (break/continue).
+    const datosEntrada = null;`;
+            break;
+    }
+
+    // Retorna una estructura limpia simulando un archivo de pruebas real
+    return `/** ---- PRUEBA AUTOMÁTICA PARA BUCLE #${id} ---- **/
+describe('Pruebas para Bucle #${id} (${categoria})', () => {
+    test('Debería procesar correctamente los valores límite de la condición', () => {
+        ${sugerenciaEntrada.trim()}
+        
+        // Código aislado bajo análisis:
+        function encasuladoParaPrueba() {
+            // Inyecta tus variables de prueba aquí antes de ejecutar el bucle
+            ${codigoBucle.replace(/\n/g, '\n            ')}
+        }
+
+        expect(() => encasuladoParaPrueba()).not.toThrow();
+    });
+});`;
+}
